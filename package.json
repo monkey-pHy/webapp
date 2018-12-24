@@ -1,0 +1,22 @@
+{
+  "name": "webapp",
+  "version": "1.0.0",
+  "description": "仿美团外卖webapp项目搭建",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nobody19921117/webapp.git"
+  },
+  "author": "heyan,peng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nobody19921117/webapp/issues"
+  },
+  "homepage": "https://github.com/nobody19921117/webapp#readme",
+  "dependencies": {
+    "webpack": "^4.3.0"
+  }
+}
