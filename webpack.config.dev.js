@@ -1,10 +1,31 @@
 //定义常见目录路径
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const fs = require('fs'); //node中对于文件系统的库，系统提供
 const srcRoot = path.resolve('./src'); //resolve就是对路径进行拼接
 const devPath = path.resolve(__dirname, 'dev'); //表示当前webpack.config.dev.js所在的文件
 const pageDir = path.resolve(srcRoot, 'page');
 const mainFile = 'index.js';
+
+
+function gethtmlArray(){
+    let htmlArray = [];
+    Object.keys(entryMap).forEach((key)=>{
+        let fullPathName = path.resolve(pageDir,key);
+        let fileName = path.resolve(fullPathName, key+'.html');
+
+        //是否有template文件存在
+        if(fs.existsSync(fileName)){
+            htmlArray.push(new HtmlWebpackPlugin({
+                filename : key+'.html',
+                template: fileName,
+                chunks: [key]//在生成的html文件中引入相应的js文件，如果是有两个key就相应的引入两个js文件
+            }));
+        }
+
+    })
+    return htmlArray;
+}
 //__dirname是node的魔术变量
 //node文件目录遍历来生成entry
 function getEntry() {
@@ -24,9 +45,13 @@ function getEntry() {
 }
 
 const entryMap = getEntry();
+const htmlArray = gethtmlArray(entryMap);
 
 module.exports = {
     mode: "development",
+    devServer: {
+        contentBase: devPath//将dev的根目录设置成dev目录
+    },
     entry: entryMap,
     output: {
         path: devPath,
@@ -36,6 +61,11 @@ module.exports = {
     module: {
         //配置loader
         rules: [
+            {
+                test: /\.(js|jsx)$/,
+                use: [{loader: 'babel-loader'}],//将es6代码转换成浏览器可识别代码的插件
+                include: srcRoot
+            },
             //css结尾的文件，加载css-loader（在include中的文件才会生效）
             {
                 test: /\.css$/,
@@ -53,5 +83,8 @@ module.exports = {
                 include: srcRoot
             } //当图片小于8192，就会把图片转成base64进行加载，大于8192就原静态图片引入
         ]
-    }
+    },
+    plugins:[
+
+    ].concat(htmlArray)
 }
