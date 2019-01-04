@@ -17,6 +17,8 @@ const addTodo = (state, action) => {
 }
 
 const tabReducer = (state = initState, action) => {
+    //state ==initSate 相当于 if（！state）{state == initState }
+    //判断action.type是ADD_TODO的，那就调用方法addTODO
     switch (action.type) {
         case ADD_TODO:return addTodo(state, action);
         default: return state;

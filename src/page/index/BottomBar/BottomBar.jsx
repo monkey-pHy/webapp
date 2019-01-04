@@ -15,12 +15,25 @@ class BottomBar extends React.Component {
         let tabs = ['首页', "订单", "我的"];
 
         tabs.map((item, index)=>{
-            return ()
+            return (
+                <div key={index} className="btn-item">
+                <div className="tab-icon"></div>
+                <div className="btm-name">{item}</div>
+                </div>
+            )
         })
     }
     render() {
-        <div className="bottom-bar">
-            {this.renderItems()}
-        </div>
+        return(
+            <div className="bottom-bar">
+                {this.renderItems()}
+            </div>
+        )
     }
 }
+
+export default connect(
+    state =>({
+
+    })
+)(BottomBar);
