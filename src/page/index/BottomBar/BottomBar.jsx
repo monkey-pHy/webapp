@@ -14,8 +14,9 @@ class BottomBar extends React.Component {
     renderItems() {
         let tabs = ['首页', "订单", "我的"];
 
-        tabs.map((item, index)=>{
+        return tabs.map((item, index)=>{
             return (
+                // 如果组件采取循环方式渲染，每个item就得加入一个key
                 <div key={index} className="btn-item">
                 <div className="tab-icon"></div>
                 <div className="btm-name">{item}</div>

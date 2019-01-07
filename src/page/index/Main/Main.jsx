@@ -15,15 +15,17 @@ class Main extends React.Component {
         this.props.num;
     }
 
-    click() {
-        this.props.dispatch(addTodo({
-            num: 10
-        }))
-    }
+    // click() {
+    //     this.props.dispatch(addTodo({
+    //         num: 10
+    //     }))
+    // }
     render(){
-        let num = this.props.num;
+        // let num = this.props.num;
         return (
-            <div onClick={()=>this.click()}>{num}</div>
+            <div>
+                <BottomBar />
+            </div>
         );
 
     }
@@ -31,6 +33,6 @@ class Main extends React.Component {
 }
 export default connect(
     state =>({
-        num: state.tabReducer.num
+        // num: state.tabReducer.num
     })
 )(Main);
