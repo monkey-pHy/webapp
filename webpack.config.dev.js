@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const fs = require('fs'); //node中对于文件系统的库，系统提供
 const srcRoot = path.resolve('./src'); //resolve就是对路径进行拼接
 const devPath = path.resolve(__dirname, 'dev'); //表示当前webpack.config.dev.js所在的文件
-const staticPath = path.resolve(__dirname,'./dev/static')
 const pageDir = path.resolve(srcRoot, 'page');
 const mainFile = 'index.js';
 

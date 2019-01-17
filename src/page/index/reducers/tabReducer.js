@@ -1,8 +1,23 @@
 //接收action
 import { ADD_TODO } from '../actions/actionTypes.js';//引入常量文件
+import { TABKEY } from '../config.js';
 
 const initState = {
-    num: 0
+    tabs: [
+        {
+            name: '首页',
+            key: TABKEY.home
+        },
+        {
+            name: '订单',
+            key: TABKEY.order           
+        },
+        { 
+            name: '首页',
+            key: TABKEY.my
+        }
+    ],
+    activeKey: TABKEY.home
 };
 //定义action
 const addTodo = (state, action) => {
