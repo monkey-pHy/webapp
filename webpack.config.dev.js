@@ -53,6 +53,9 @@ module.exports = {
         contentBase: devPath//将dev的根目录设置成dev目录
     },
     entry: entryMap,
+    resolve: {
+        extensions: ['.js', '.jsx'] //可在引入时不加js或者jsx的扩展名
+    },
     output: {
         path: devPath,
         filename: '[name].min.js'

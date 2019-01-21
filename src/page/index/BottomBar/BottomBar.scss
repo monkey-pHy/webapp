@@ -14,19 +14,43 @@
         align-items: center;
         justify-content: center;
         color: #999999;
+        .tab-icon {
+            margin-bottom: 4px;
+            width: 25px;
+            height: 25px;
+            background-size: cover;
+        }
+        &.active {
+            color: #000000;
+        }
         &.my {
             .tab-icon {
-                background-image: url('./img/myIcon.png')
+                background-image: url('./img/myIcon.png');
+            }
+        }
+        &.my.active {
+            .tab-icon {
+                background-image: url('./img/myIconActive.png');
             }
         }
         &.order {
             .tab-icon {
-                background-image: url('./img/homeIcon.png')
+                background-image: url('./img/orderIcon.png');
+            }
+        }
+        &.order.active {
+            .tab-icon {
+                background-image: url('./img/orderIconActive.png');
             }
         }
         &.home {
             .tab-icon {
-                background-image: url('./img/homeIcon.png')
+                background-image: url('./img/homeIcon.png');
+            }
+        }
+        &.home.active {
+            .tab-icon {
+                background-image: url('./img/homeIconActive.png');
             }
         }
     }

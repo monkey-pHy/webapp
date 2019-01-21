@@ -1,5 +1,5 @@
 //接收action
-import { ADD_TODO } from '../actions/actionTypes.js';//引入常量文件
+import { ADD_TODO, CHANGE_TAB} from '../actions/actionTypes.js';//引入常量文件
 import { TABKEY } from '../config.js';
 
 const initState = {
@@ -13,13 +13,14 @@ const initState = {
             key: TABKEY.order           
         },
         { 
-            name: '首页',
+            name: '我的',
             key: TABKEY.my
         }
     ],
     activeKey: TABKEY.home
 };
-//定义action
+
+/** 定义action的方法
 const addTodo = (state, action) => {
 
     let objNum = action.obj.num;
@@ -30,12 +31,20 @@ const addTodo = (state, action) => {
         num: num + objNum
     };
 }
+*/
+
+//定义changeTab的reducer接收
+const changeTab = ( state, action ) => {
+    let activeKey = action.obj.activeKey;
+
+    return { ...state, activeKey: activeKey }; //return的是initstate里的值
+}
 
 const tabReducer = (state = initState, action) => {
     //state ==initSate 相当于 if（！state）{state == initState }
     //判断action.type是ADD_TODO的，那就调用方法addTODO
     switch (action.type) {
-        case ADD_TODO:return addTodo(state, action);
+        case CHANGE_TAB:return changeTab(state, action);
         default: return state;
     }
 
