@@ -66,7 +66,7 @@ module.exports = {
         rules: [
             {
                 test: /\.(js|jsx)$/,
-                use: [{loader: 'babel-loader'}],//将es6代码转换成浏览器可识别代码的插件
+                use: [{loader: 'babel-loader'},{loader:'eslint-loader'}],//将es6代码转换成浏览器可识别代码的插件
                 include: srcRoot
             },
             //css结尾的文件，加载css-loader（在include中的文件才会生效）

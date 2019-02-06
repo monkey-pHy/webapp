@@ -1,5 +1,5 @@
 //接收action
-import { ADD_TODO, CHANGE_TAB} from '../actions/actionTypes.js';//引入常量文件
+import {CHANGE_TAB} from '../actions/actionTypes.js';//引入常量文件
 import { TABKEY } from '../config.js';
 
 const initState = {

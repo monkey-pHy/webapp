@@ -3,8 +3,6 @@ import React from 'react';
 
 import { connect } from 'react-redux';//讲react组件和redux结合的方法
 
-import {addTodo} from '../actions/tabAction.js';
-
 import BottomBar from '../BottomBar/BottomBar.jsx'
 
 
@@ -32,7 +30,5 @@ class Main extends React.Component {
 
 }
 export default connect(
-    state =>({
-        // num: state.tabReducer.num
-    })
+    
 )(Main);
