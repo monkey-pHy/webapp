@@ -1,8 +1,9 @@
 //定义常见目录路径
+const webpack = require('webpack');//引入热模块
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const fs = require('fs'); //node中对于文件系统的库，系统提供
-const srcRoot = path.resolve('./src'); //resolve就是对路径进行拼接
+const srcRoot = path.resolve(__dirname,'src'); //resolve就是对路径进行拼接
 const devPath = path.resolve(__dirname, 'dev'); //表示当前webpack.config.dev.js所在的文件
 const pageDir = path.resolve(srcRoot, 'page');
 const mainFile = 'index.js';
@@ -50,7 +51,8 @@ const htmlArray = gethtmlArray(entryMap);
 module.exports = {
     mode: "development",
     devServer: {
-        contentBase: devPath//将dev的根目录设置成dev目录
+        contentBase: devPath,//将dev的根目录设置成dev目录
+        hot: true
     },
     entry: entryMap,
     resolve: {
@@ -88,6 +90,7 @@ module.exports = {
         ]
     },
     plugins:[
-
+        new webpack.NamedModulesPlugin(),
+        new webpack.HotModuleReplacementPlugin()
     ].concat(htmlArray)
 }

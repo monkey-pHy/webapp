@@ -5,7 +5,7 @@ import  store  from './store.js';
 
 import { Provider } from 'react-redux';
 
-import Main from './Main/Main.jsx'
+import Main from './Main/Container.jsx';
 
 
 ReactDom.render(
